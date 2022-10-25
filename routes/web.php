@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,19 +12,9 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/', function () {
-//     $nombre = "Oriol";
-//     return view('home', compact('nombre'));
-// })->name('home');
-
+// */
 
 Route::view('/','home')->name('home');
 Route::view('/about','about')->name('about');
-Route::view('/portfolio','portfolio', compact('portfolio'))->name('portfolio');
 Route::view('/contact','contact')->name('contact');
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');;
