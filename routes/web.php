@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactFormController;
 
 /*
@@ -18,5 +18,8 @@ use App\Http\Controllers\ContactFormController;
 Route::view('/','home')->name('home');
 Route::view('/about','about')->name('about');
 Route::view('/contact','contact')->name('contact');
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+
 Route::post('contact', [ContactFormController::class, 'store'])->name('contactForm');

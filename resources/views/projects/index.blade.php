@@ -1,14 +1,15 @@
 @extends('layout')
 
-@section('title', 'Portfolio')
+@section('title', 'Projects')
 
 @section('content')
     <h1> PORTFOLIO </h1>
     <ul>
-        @forelse ($portfolio as $portfolioItem)
-            <li>{{ $portfolioItem['title'] }}</li>
+        @forelse ($projects as $project)
+            <a href="{{route('projects.show', $project)}}">{{ $project->title }}</a> <br>
         @empty
             <p>No hay proyectos para mostrar</p>
         @endforelse
+        
     </ul>
 @endsection
