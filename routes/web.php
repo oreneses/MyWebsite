@@ -20,6 +20,8 @@ Route::view('/about','about')->name('about');
 Route::view('/contact','contact')->name('contact');
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
+Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::post('contact', [ContactFormController::class, 'store'])->name('contactForm');
