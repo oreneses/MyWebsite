@@ -8,14 +8,15 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::paginate();
+        $projects = Project::get();
         return view('projects.index', compact('projects'));
     }
 
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::findOrFail($id);
-        return view('projects.show', compact('project'));
+        // $project = Project::findOrFail($project);
+        // return view('projects.show', compact('project'));
+        return view('projects.show', ['project'=>$project]);
     }
     
 }
