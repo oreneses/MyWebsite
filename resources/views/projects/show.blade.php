@@ -10,6 +10,9 @@
     <div>
         <a href="{{ route('projects.edit', $project) }}">Editar proyecto</a>
         <a href="{{route('projects.index')}}" style="margin-left: 20px">Volver</a>
+        <form action="{{route('projects.delete', $project)}}" method="post">
+            @csrf @method('DELETE')
+            <button>Eliminar</button>
+        </form>
     </div>
-
 @endsection

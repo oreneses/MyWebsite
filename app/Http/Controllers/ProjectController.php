@@ -23,22 +23,29 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    // Almacenamos proyectos (FormRequest)
+    // Almacenamos proyecto (FormRequest)
     public function store(SaveProjectRequest $request){
         Project::create($request->validated());
         return redirect()->route('projects.index');
     }
     
-    // Editamos proyectos
+    // Editamos proyecto
     public function edit(Project $project){
         return view('projects.edit',[
             'project' => $project
         ]);
     }
 
-    // Actualizamos proyectos
+    // Actualizamos proyecto
     public function update(Project $project, SaveProjectRequest $request){
         $project->update($request->validated());
         return redirect()->route('projects.show', $project);
     }
+
+    // Eliminamos proyecto
+    public function delete(Project $project){
+        $project->delete();
+        return redirect()->route('projects.index');
+    }
+
 }
