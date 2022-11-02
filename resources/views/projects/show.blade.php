@@ -7,6 +7,9 @@
     <p>{{$project->description}}</p>
     <small>{{$project->created_at->diffForHumans()}}</small>
     <br><br>
-    <a href="{{route('projects.index')}}">Volver</a>
+    <div>
+        <a href="{{ route('projects.edit', $project) }}">Editar proyecto</a>
+        <a href="{{route('projects.index')}}" style="margin-left: 20px">Volver</a>
+    </div>
 
 @endsection

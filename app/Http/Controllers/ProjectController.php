@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -24,9 +24,21 @@ class ProjectController extends Controller
     }
 
     // Almacenamos proyectos (FormRequest)
-    public function store(CreateProjectRequest $request){
+    public function store(SaveProjectRequest $request){
         Project::create($request->validated());
         return redirect()->route('projects.index');
     }
     
+    // Editamos proyectos
+    public function edit(Project $project){
+        return view('projects.edit',[
+            'project' => $project
+        ]);
+    }
+
+    // Actualizamos proyectos
+    public function update(Project $project, SaveProjectRequest $request){
+        $project->update($request->validated());
+        return redirect()->route('projects.show', $project);
+    }
 }
