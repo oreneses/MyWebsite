@@ -1,12 +1,4 @@
-<script>
-    function autofillUrl(){
-        var $url = document.getElementById('title').value;
-        var $urlLowerCase = $url.toLowerCase();
-        var $urlFinal = $urlLowerCase.replaceAll(' ', '-');
-        document.getElementById('url').value=$urlFinal
-        }
-</script>
-
+<script src="/js/app.js"></script>
 
 @extends('layout')
 
