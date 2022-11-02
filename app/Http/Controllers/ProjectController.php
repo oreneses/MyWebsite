@@ -25,8 +25,6 @@ class ProjectController extends Controller
 
     // Almacenamos proyectos (FormRequest)
     public function store(CreateProjectRequest $request){
-        // Es importante el validated() de la request ya que sino podrian modificar la base de datos desde inspeccionar.
-        // El validated es necesario porque hemos desprotegido la asignacion masiva desde el modelo con $guarded = []
         Project::create($request->validated());
         return redirect()->route('projects.index');
     }

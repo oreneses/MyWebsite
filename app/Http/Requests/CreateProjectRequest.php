@@ -25,8 +25,19 @@ class CreateProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:App\Models\Project,title',
-            'url' => 'required|unique:App\Models\Project,url',
+            'url' => 'required',
             'description' => 'required|min:10'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'El :attribute es obligatorio.',
+            'title.unique' => 'El campo :attribute ya ha sido registrado.',
+            'url.required' => 'Debes agregar el título del proyecto para rellenar este campo',
+            'description.min' => 'La :attribute debe tener mínimo 10 carácteres'
+        ];
+    }
+
 }
