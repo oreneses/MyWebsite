@@ -17,6 +17,6 @@ class ContactFormController extends Controller
         
         Mail::to('reneses.test@gmail.com')->send(new MessageReceived($msg));
 
-        return view('home');
+        return back()->with('status', 'Tu mensaje ha sido enviado');
     }
 }

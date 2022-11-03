@@ -26,7 +26,7 @@ class ProjectController extends Controller
     // Almacenamos proyecto (FormRequest)
     public function store(SaveProjectRequest $request){
         Project::create($request->validated());
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.create')->with('status', 'Tu proyecto se ha creado correctamente.');
     }
     
     // Editamos proyecto
@@ -39,7 +39,7 @@ class ProjectController extends Controller
     // Actualizamos proyecto
     public function update(Project $project, SaveProjectRequest $request){
         $project->update($request->validated());
-        return redirect()->route('projects.show', $project);
+        return redirect()->route('projects.edit', $project)->with('status', 'Tu proyecto se ha actualizado correctamente.');;
     }
 
     // Eliminamos proyecto
