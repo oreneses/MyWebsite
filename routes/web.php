@@ -1,8 +1,10 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,5 @@ Route::patch('/projects/{project}', [ProjectController::class, 'update'])->name(
 Route::delete('/projects/{project}', [ProjectController::class, 'delete'])->name('projects.delete');
 
 Route::post('contact', [ContactFormController::class, 'store'])->name('contactForm');
+
+Auth::routes();
