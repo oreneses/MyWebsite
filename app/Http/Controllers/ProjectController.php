@@ -7,6 +7,12 @@ use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     // Obtenemos proyectos
     public function index(){
         $projects = Project::get();
