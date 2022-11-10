@@ -1,36 +1,66 @@
-<script src="/js/app.js"></script>
+<script>
+    function autofillUrl(){
+    var $url = document.getElementById('title').value;
+    var $urlLowerCase = $url.toLowerCase();
+    var $urlFinal = $urlLowerCase.replaceAll(' ', '-');
+    document.getElementById('url').value=$urlFinal
+    }
+</script>
+
 
 @extends('layout')
 
 @section('title', 'Crear proyecto')
 
 @section('content')
-    <h1>@lang('Create a new project')</h1>
 
-    @if(session('status'))
-        {{ session('status') }} <br>
-        <a href="{{ route('home') }}">Volver a inicio</a>
-    @else
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mx-auto">
 
-        <form method="POST" action="{{ route('projects.store') }}" onchange="autofillUrl()">
-            @csrf
-            <label>
-                Titulo del proyecto <br>
-                <input type="text" name="title" id="title"><br>
-                {!! $errors->first('title', '<small>:message</small><br>') !!}
-            </label><br>
-            <label>
-                URL del proyecto <br>
-                <input type="text" id="url" name="url"><br>
-                {!! $errors->first('url', '<small>:message</small><br>') !!}
-            </label><br>
-            <label>
-                Descripcion del proyecto <br>
-                <textarea type="textarea" name="description"></textarea><br>
-                {!! $errors->first('description', '<small>:message</small><br>') !!}
-            </label><br>
-            <button> GUARDAR </button>
-        </form>
-    @endif
+            @if(session('status'))
+                {{ session('status') }} <br>
+                <a href="{{ route('home') }}">Volver a inicio</a>
+            @else
+                <form class="bg-white shadow rounded p-3" 
+                    method="POST" 
+                    action="{{ route('projects.store') }}" 
+                    onchange="autofillUrl()">
+                    @csrf
+                    <h1 class="display-6 mb-4">@lang('Create a new project')</h1>
+                    <div class="form-group">
+                        <label class="px-2 py-2" for="title"> Título del proyecto </label>
+                            <input class="form-control bg-light shadow-sm @error('title') is-invalid @else border-1 @enderror"
+                                type="text" 
+                                name="title" 
+                                id="title"
+                                placeholder="Escribe aquí el título del proyecto...">
+                                {!! $errors->first('title', '<small style="color:red">:message</small><br>') !!}
+                    <div>
+                    <div class="form-group">
+                        <label class="px-2 py-2" for="url"> URL del proyecto </label>
+                            <input class="form-control bg-light shadow-sm @error('url') is-invalid @else border-1 @enderror"
+                                type="text" 
+                                name="url" 
+                                id="url"
+                                placeholder="Escribe aquí la URL del proyecto...">
+                                {!! $errors->first('url', '<small style="color:red">:message</small><br>') !!}
+                    <div>
+                    <div class="form-group">
+                        <label class="px-2 py-2" for="description"> Descripción del proyecto </label>
+                            <textarea class="form-control bg-light shadow-sm @error('description') is-invalid @else border-1 @enderror"
+                                type="textarea" 
+                                name="description"
+                                placeholder="Escribe aquí la descripción del proyecto..."></textarea>
+                                {!! $errors->first('description', '<small style="color:red">:message</small><br>') !!}
+                    <div>
+                    <div class="form-group" style="margin-top: 15px">
+                        <button class="btn btn-primary btn-lg btn-block py-1"> Guardar </button>
+                    </div>
+                </form>
+            @endif
+        </div>
+    </div>
+</div>
 
 @endsection
