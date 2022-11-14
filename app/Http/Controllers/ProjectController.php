@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Http\Requests\SaveProjectRequest;
+// use App\Models\User;
+// use Illuminate\Support\Facades\DB;
+
 
 class ProjectController extends Controller
 {
@@ -15,8 +18,13 @@ class ProjectController extends Controller
 
     // Obtenemos proyectos
     public function index(){
-        $projects = Project::get();
-        return view('projects.index', compact('projects'));
+        if (isset(auth()->user()->id)) {
+            $projects = Project::get()->where('idUser', auth()->user()->id);
+            return view('projects.index', compact('projects'));
+        }else{
+            $projects = Project::get();
+            return view('projects.index', compact('projects'));
+        }
     }
 
     // Mostramos los detalles de un proyecto especifico

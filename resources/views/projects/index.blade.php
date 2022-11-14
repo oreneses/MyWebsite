@@ -8,12 +8,18 @@
             <h2 class="display-5 px-4 mb-3"> PROYECTOS </h2><br>
         </div><hr>
         <p class="lead text-secondary px-4 py-3">
-            Proyectos realizados: 
+            Proyectos realizados:
         </p><br>
         <ul>
             @forelse ($projects as $project)
             <li class="list-group-item border-0 mb-3 shadow-sm">
                 <a class="d-flex justify-content-between align-items-center nav-link" href="{{route('projects.show', $project)}}">
+                    <span class="font-weight-bold">
+                        <?php
+                            $results = DB::select('select * from users where id = '.$project->idUser);
+                            print_r($results[0]->{'name'});
+                        ?>
+                    </span>
                     <span class="font-weight-bold">
                         {{ $project->title }}
                     </span>
@@ -23,7 +29,6 @@
                 </a>
                 <hr>
             </li>
-                
             @empty
             <li class="list-group-item border-0 mb-3 shadow-sm">
                 No hay proyectos para mostrar
@@ -39,3 +44,5 @@
         @endauth
     </div>
 @endsection
+
+

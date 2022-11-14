@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-6">
-            <h1 class="display-4 text-primary"> Bienvenido! </h1>
+            <h1 class="display-4 text-primary"> Bienvenid@! </h1>
             <p class="lead text-secondary text-justify py-4">
                 Este es un sitio web donde los usuarios tienen la opción de registrarse y poder presentarse de cara
                 a las empresas. Además, también cuenta con la opción de adjuntar proyectos realizados y subidos a Github. Una vez
