@@ -15,7 +15,7 @@
                         </a>
                     </li>
                     <li class="nav-item" > 
-                        <a class="nav-link {{ setActive('about') }}" href="{{ route('about') }}"> 
+                        <a class="nav-link {{ setActive('profile.*') }}" href="{{ route('profile.index') }}"> 
                             @lang('About')
                         </a>
                     </li>

@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,14 @@ use App\Http\Controllers\ContactFormController;
 // */
 
 Route::view('/','home')->name('home');
-Route::view('/about','about')->name('about');
+
+// Route::get('/about','about')->name('profile.about');
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
+// Route::get('/profile/{nameUser}', [ProfileController::class, 'show'])->name('profile.show');
+
 Route::view('/contact','contact')->name('contact');
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
