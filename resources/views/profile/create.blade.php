@@ -4,15 +4,23 @@
 
 @section('content')
 <div class="container">
+
+
+    <figure class="px-3 py-3">
+        <div class="row display-6">
+            <p class="">Crea tu perfil</p> 
+        </div><br>
+        <blockquote class="blockquote">
+          <p>Crea tu perfil para que las empresas sepan más acerca de ti, <cite>{{auth()->user()->name}}.</cite></p> 
+        </blockquote>   
+    </figure>
+
+
     <form class="bg-white shadow rounded p-3" 
         method="POST" 
         action="{{ route('profile.store') }}">
         
         @csrf
-
-        <div class="row display-6">
-            Crear perfil para: {{auth()->user()->name}}
-        </div><br>
 
         <div class="row">
             <div class="col-md-6">
@@ -32,7 +40,7 @@
                     {!! $errors->first('surnames', '<small style="color:red">:message</small><br>') !!}
             </div>
         </div>
-
+        <br>
         <div class="row">
             <div class="col-md-4">
                 <label class="px-2 py-2" for="phone"> Telefono </label>
@@ -60,7 +68,7 @@
                     {!! $errors->first('residence', '<small style="color:red">:message</small><br>') !!}
             </div>
         </div>
-
+        <br>
         <div class="row">
             <div class="col-md-4">
                 <label class="px-2 py-2" for="job"> Puesto </label>
@@ -68,38 +76,31 @@
                         type="text" 
                         name="job" 
                         id="job">
-                {!! $errors->first('job', '<small style="color:red">:message</small><br>') !!}
-            <div>
-                <div class="col-md-4">
-                <label class="px-2 py-2" for="job"> Puesto </label>
-                    <input class="form-control bg-light shadow-sm @error('job') is-invalid @else border-1 @enderror"
-                        type="text" 
-                        name="job" 
-                        id="job">
-                {!! $errors->first('job', '<small style="color:red">:message</small><br>') !!}
-            <div>
-            <div class="col-md-4">
-                <label class="px-2 py-2" for="remote"> Modalidad </label>
-                    <select class="form-control bg-light shadow-sm @error('remote') is-invalid @else border-1 @enderror"
+                    {!! $errors->first('job', '<small style="color:red">:message</small><br>') !!}
+            </div>
+            <div class="col-md-3">
+                <label class="px-2 py-2" for="modality"> Modalidad </label>
+                        <select class="form-control bg-light shadow-sm @error('modality') is-invalid @else border-1 @enderror"
                         type="radio" 
-                        name="remote" 
-                        id="remote">
-                        <option value="true">Remoto</option>
-                        <option value="false">Presencial</option>
-                    </select>
-            <div>
-        </div>
-
-        <div class="row">
-            <div class="form-group">
-                <label class="px-2 py-2" for="url_linkedIn"> URL LinkedIn </label>
-                    <input class="form-control bg-light shadow-sm @error('url_linkedIn') is-invalid @else border-1 @enderror"
+                        name="modality" 
+                        id="modality">
+                            <option value=""></option>
+                            <option value="Remoto">Remoto</option>
+                            <option value="Presencial">Presencial</option>
+                            <option value="Híbrido">Híbrido</option>
+                        </select>
+                    {!! $errors->first('modality', '<small style="color:red">:message</small><br>') !!}
+            </div>
+            <div class="col-md-5">
+                <label class="px-2 py-2" for="linkedIn"> URL LinkedIn </label>
+                    <input class="form-control bg-light shadow-sm @error('linkedIn') is-invalid @else border-1 @enderror"
                         type="text" 
-                        name="url_linkedIn" 
-                        id="url_linkedIn">
-            <div>
+                        name="linkedIn" 
+                        id="linkedIn">
+                    {!! $errors->first('linkedIn', '<small style="color:red">:message</small><br>') !!}
+            </div>
         </div>
-
+        <br>
         <div class="row">
             <div class="form-group">
                 <label class="px-2 py-2" for="presentation"> Descripción corta </label>
@@ -107,11 +108,13 @@
                         type="text" 
                         name="presentation" 
                         id="presentation"> </textarea>
+                        {!! $errors->first('presentation', '<small style="color:red">:message</small><br>') !!}
             <div>
         </div>
-
+        <br>
         <div class="form-group" style="margin-top: 15px">
-            <button class="btn btn-primary btn-lg btn-block py-1"> Guardar </button>
+            <a class="btn btn-primary btn-lg btn-block py-1 border-0" style="background-color: #f7f7f7; color:#38b2ac" href="{{route('home')}}">Volver</a>
+            <button class="btn btn-primary btn-lg btn-block py-1 border-0" style="background-color: #38b2ac" type="submit"> Guardar </button>
         </div>
 
         <div class="form-group d-none">
@@ -121,19 +124,3 @@
     </form>
 </div>
 @endsection
-
-    {{-- <div class="row">
-        <div class="col-12 col-lg-6">
-            <h1 class="display-4 text-primary"> Quién soy </h1><br>
-            <p class="lead text-secondary text-justify">
-                testtestest tes teste t ete tetetesttestest tes teste t ete tetetesttestest tes teste t ete tete
-                testtestest tes teste t ete tetetesttestest tes teste t ete tetetesttestest tes teste t ete tete
-                testtestest tes teste t ete tetetesttestest tes teste t ete tetetesttestest tes teste t ete tete
-                testtestest tes teste t ete tetetesttestest tes teste t ete tetetesttestest tes teste t ete tete
-            </p>
-            <a class="btn btn-lg btn-block btn-outline-primary" href="{{route('projects.index')}}">Ir a proyectos</a>
-        </div>
-        <div class="col-lg-6">
-            <img class="img-fluid mt-4" src="/img/about.svg" alt="Quién soy">
-        </div>
-    </div> --}}

@@ -13,7 +13,7 @@ class CreateUserProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('UserProfile', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('surnames');
@@ -21,8 +21,8 @@ class CreateUserProfileTable extends Migration
             $table->string('date_of_birth');
             $table->string('residence');
             $table->string('job');
-            $table->boolean('remote');
-            $table->string('url_linkedIn')->unique();
+            $table->string('modality');
+            $table->string('linkedIn');
             $table->string('presentation');
             $table->string('idUser');
             $table->timestamps();
@@ -36,6 +36,6 @@ class CreateUserProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('UserProfile');
+        Schema::dropIfExists('profiles');
     }
 }

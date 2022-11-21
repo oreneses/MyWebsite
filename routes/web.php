@@ -21,9 +21,9 @@ Route::view('/','home')->name('home');
 // Route::get('/about','about')->name('profile.about');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
 Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
-// Route::get('/profile/{nameUser}', [ProfileController::class, 'show'])->name('profile.show');
+Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+Route::get('/profile/{nameProfile}', [ProfileController::class, 'show'])->name('profile.show');
 
 Route::view('/contact','contact')->name('contact');
 
