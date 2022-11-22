@@ -119,6 +119,7 @@
 
         <div class="form-group d-none">
             <input type="text" name="idUser" id="idUser" value="{{ auth()->user()->id }}">
+            <input type="text" name="email" id="email" value="{{ auth()->user()->email }}">
         <div>
 
     </form>

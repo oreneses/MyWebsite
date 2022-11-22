@@ -26,6 +26,7 @@ class SaveProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'surnames' => 'required',
+            'email' => 'required',
             'phone' => 'required',
             'date_of_birth' => 'required',
             'residence' => 'required',

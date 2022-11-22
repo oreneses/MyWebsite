@@ -16,7 +16,11 @@
                     </li>
                     <li class="nav-item" > 
                         <a class="nav-link {{ setActive('profile.*') }}" href="{{ route('profile.index') }}"> 
-                            @lang('About')
+                            @auth
+                                @lang('Profile')
+                            @else
+                                @lang('Profiles')
+                            @endauth
                         </a>
                     </li>
                     <li class="nav-item">
@@ -24,12 +28,12 @@
                             @lang('Projects')
                         </a>
                     </li>
+                @guest
                     <li class="nav-item"> 
                         <a class="nav-link {{ setActive('contact') }}" href="{{route('contact') }}">
                             @lang('Contact') 
                         </a>
                     </li>
-                @guest
                     <li class="nav-item">
                         <a class="nav-link {{ setActive('login') }}" href="{{ route('login') }}">
                             @lang('Login')

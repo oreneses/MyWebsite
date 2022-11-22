@@ -11,8 +11,13 @@ class ProfileController extends Controller
 
     // Creamos perfil
     public function index(){
-        $profiles = Profile::get()->where('idUser', auth()->user()->id);
-        return view('profile.index', compact('profiles'));
+        if (isset(auth()->user()->id)) {
+            $profiles = Profile::get()->where('idUser', auth()->user()->id);
+            return view('profile.index', compact('profiles'));
+        }else {
+            $profiles = Profile::get();
+            return view('profile.index', compact('profiles'));
+        }
     }
 
     // Creamos perfil
@@ -22,7 +27,8 @@ class ProfileController extends Controller
 
     // Mostramos perfil
     public function show(Profile $profile){
-        return view('profile.about', ['profiles'=>$profile]);
+        $profiles = Profile::get()->where('idUser',1);
+        return view('profile.about', ['profiles'=>$profiles]);
     }
 
     //Almacenamos perfil (FormRequest)
