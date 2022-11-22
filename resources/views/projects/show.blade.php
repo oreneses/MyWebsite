@@ -14,20 +14,16 @@
         <div class="d-flex justify-content-between align-items-center">
             @auth
                 <form id="delete-project" clas="d-none" action="{{route('projects.delete', $project)}}" method="post">
-                    @csrf @method('DELETE')
+                    @csrf @method('DELETE') 
+                    <a class="btn" href="{{route('projects.index')}}">Volver</a>
+                    <a class="btn" href="{{ route('projects.edit', $project) }}">Editar</a>
+                    <button class="btn" style="color:red">Eliminar</button>
                 </form>
             @endauth
         </div>
     </div>
     <div class="btn-group btn-group-sm">
-        <a class="btn" href="{{route('projects.index')}}">Volver</a>
-        @auth
-            <a class="btn" href="{{ route('projects.edit', $project) }}">Editar</a>
-            <a class="btn" style="color: red" href="{{route('projects.index')}}" 
-                onclick="document.getElementById('delete-project').submit()">
-                Eliminar
-            </a>
-        @endauth
+        <a class="btn mt-3" href="{{route('projects.index')}}">Volver</a>
     </div>
 </div>
 @endsection
