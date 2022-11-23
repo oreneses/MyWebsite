@@ -12,18 +12,18 @@
         </p>
         <p class="text-black-50 mt-3">{{$project->created_at->diffForHumans()}}</p>
         <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group btn-group-sm">
+                <a class="btn" href="{{route('projects.index')}}">Volver</a>
+            </div>
             @auth
                 <form id="delete-project" clas="d-none" action="{{route('projects.delete', $project)}}" method="post">
                     @csrf @method('DELETE') 
-                    <a class="btn" href="{{route('projects.index')}}">Volver</a>
                     <a class="btn" href="{{ route('projects.edit', $project) }}">Editar</a>
                     <button class="btn" style="color:red">Eliminar</button>
                 </form>
             @endauth
         </div>
     </div>
-    <div class="btn-group btn-group-sm">
-        <a class="btn mt-3" href="{{route('projects.index')}}">Volver</a>
-    </div>
+    
 </div>
 @endsection

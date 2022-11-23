@@ -20,7 +20,7 @@
 
             @if(session('status'))
                 {{ session('status') }} <br>
-                <a href="{{ route('home') }}">Volver a inicio</a>
+                <a href="{{ route('projects.index') }}">Volver a los proyectos</a>
             @else
                 <form class="bg-white shadow rounded p-3" 
                     method="POST" 
