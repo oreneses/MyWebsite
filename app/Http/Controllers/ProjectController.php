@@ -22,7 +22,7 @@ class ProjectController extends Controller
             $projects = Project::get()->where('idUser', auth()->user()->id);
             return view('projects.index', compact('projects'));
         }else{
-            $projects = Project::get();
+            $projects = Project::orderBy('created_at','desc')->get();
             return view('projects.index', compact('projects'));
         }
     }
