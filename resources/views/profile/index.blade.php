@@ -62,7 +62,7 @@
             </li>
             @auth
             <div class="px-4 py-4">
-                <a class="btn btn-primary border-0" style="background-color: #38B2AC" href="#">
+                <a class="btn btn-primary border-0" style="background-color: #38B2AC" href="{{route('profile.create')}}">
                     Crear perfil
                 </a><br>
             </div>
